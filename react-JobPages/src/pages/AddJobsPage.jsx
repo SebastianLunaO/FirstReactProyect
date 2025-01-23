@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-const AddJobsPage = () => {
+import { useNavigate } from 'react-router-dom'
+const AddJobsPage = ({addJobsSubmit}) => {
   const [title,setTitle] = useState('')
   const [type,setType] = useState('Full-Time')
   const [location,setLocation] = useState('')
@@ -10,6 +11,8 @@ const AddJobsPage = () => {
   const [companyDescription,setCompanyDescription] = useState('')
   const [contactEmail,SetContactEmail] = useState('')
   const [contactPhone,setContactPhone] = useState('')
+
+  const navigate = useNavigate()
 
   const submitForm = (e) =>{
     e.prventDefault
@@ -26,8 +29,10 @@ const AddJobsPage = () => {
         contactPhone
       }
     }
+    addJobsSubmit(newJob);
+    return navigate('/jobs')
   }
-
+  
   return (
     <>
       <section className="bg-indigo-50">
