@@ -8,16 +8,16 @@ import JobPage, { jobLoader } from './pages/JobPage'
 import AddJobsPage from './pages/AddJobsPage'
 
   
-const App = () => {
-  const addJob = (newJob) =>{
-    fetch('/api/jobs',{
+const App = () => { // this funtion is called from addjobs page, and is past to it by the addJobSubmit object
+  const addJob = async (newJob) =>{
+    const res = await fetch('/api/jobs',{
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newJob)
     });
-    return ; 
+    return; 
   }
   const router = createBrowserRouter(
   
