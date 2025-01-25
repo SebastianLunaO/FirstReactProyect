@@ -10,14 +10,14 @@ import AddJobsPage from './pages/AddJobsPage'
   
 const App = () => {
   const addJob = (newJob) =>{
-    fetch('url',{
-      method: POST,
+    fetch('/api/jobs',{
+      method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newJob)
     });
-    return; 
+    return ; 
   }
   const router = createBrowserRouter(
   

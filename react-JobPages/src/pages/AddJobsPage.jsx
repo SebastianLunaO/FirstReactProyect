@@ -15,7 +15,7 @@ const AddJobsPage = ({addJobsSubmit}) => {
   const navigate = useNavigate()
 
   const submitForm = (e) =>{
-    e.prventDefault
+    e.preventDefault();
     const newJob ={
       title,
       type,
@@ -29,6 +29,7 @@ const AddJobsPage = ({addJobsSubmit}) => {
         contactPhone
       }
     }
+    console.log(newJob)
     addJobsSubmit(newJob);
     return navigate('/jobs')
   }
