@@ -83,34 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "549b",
-      "title": "adada",
-      "type": "dasdad",
-      "location": "dadadad",
-      "description": "adadada",
-      "salary": "424141",
-      "company": {
-        "name": "companyName",
-        "description": "companyDescription",
-        "contactEmail": "dsadada",
-        "contactPhone": "wwewewewew"
-      }
-    },
-    {
-      "id": "2a2e",
-      "title": "sfafafaf",
-      "type": "Full-Time",
-      "location": "csascac",
-      "description": "afafafafaf",
-      "salary": "Under 50K",
-      "company": {
-        "name": "fafafafa",
-        "description": "fafafafaf",
-        "contactEmail": "test@test.com",
-        "contactPhone": "2222222222"
-      }
     }
   ]
 }
