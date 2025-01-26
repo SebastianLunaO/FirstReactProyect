@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { useLoaderData, useParams,useNavigate } from 'react-router-dom';
 import { FaArrowAltCircleLeft,FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const JobPage = ({deleteJob}) => {
   const navigate = useNavigate()
   const job = useLoaderData();
@@ -11,6 +12,8 @@ const onDeleteClick = (jobID)=>{
  if (!confirm)return;
 
  deleteJob(jobID);
+
+ toast.success('Job delete successful');
  navigate('/jobs')
 }
 
@@ -92,7 +95,7 @@ const onDeleteClick = (jobID)=>{
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-xl font-bold mb-6">Manage Job</h3>
               <Link
-                to={`/job/edit/${job.id}`}
+                to={`/edit/jobs/${job.id}`}
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link
               >

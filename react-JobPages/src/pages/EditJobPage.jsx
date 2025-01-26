@@ -1,45 +1,23 @@
 import React from 'react'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify';
+import { useLoaderData } from 'react-router-dom'
 
-const AddJobsPage = ({addJobsSubmit}) => {
-  const [title,setTitle] = useState('')
-  const [type,setType] = useState('Full-Time')
-  const [location,setLocation] = useState('')
-  const [description,setDescription] = useState('')
-  const [salary,setSalary] = useState('Under 50K')
-  const [companyName,setCompanyName] = useState('')
-  const [companyDescription,setCompanyDescription] = useState('')
-  const [contactEmail,SetContactEmail] = useState('')
-  const [contactPhone,setContactPhone] = useState('')
 
-  const navigate = useNavigate()
+const EditJobPage = () => {
+    const job = useLoaderData();
+    const [title,setTitle] = useState(job.title)
+  const [type,setType] = useState(job.type)
+  const [location,setLocation] = useState(job.location)
+  const [description,setDescription] = useState(job.description)
+  const [salary,setSalary] = useState(job.salary)
+  const [companyName,setCompanyName] = useState(job.companyName)
+  const [companyDescription,setCompanyDescription] = useState(job.companyDescription)
+  const [contactEmail,SetContactEmail] = useState(job.contactEmail)
+  const [contactPhone,setContactPhone] = useState(job.contactPhone)
 
-  const submitForm = (e) =>{
-    e.preventDefault();
-    const newJob ={
-      title,
-      type,
-      location,
-      description,
-      salary,
-      company:{
-        name: companyName,
-        description: companyDescription,
-        contactEmail,
-        contactPhone
-      }
-    }
-    console.log(newJob)
-    addJobsSubmit(newJob);
-    toast.success('Job Added succesfully');
-    return navigate('/jobs')
-  }
-  
+    
   return (
     <>
-      <section className="bg-indigo-50">
+    <section className="bg-indigo-50">
       <div className="container m-auto max-w-2xl py-24">
         <div
           className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
@@ -223,4 +201,4 @@ const AddJobsPage = ({addJobsSubmit}) => {
   )
 }
 
-export default AddJobsPage
+export default EditJobPage
