@@ -28,6 +28,16 @@ const App = () => { // this funtion is called from addjobs page, and is past to 
       return; 
   }
 
+  const updateJob = async (updatedJob) =>{
+    const res = await fetch(`/api/jobs/${updatedJob.id}`,{
+      method: "PUT",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(updatedJob)
+    })
+  }
+
   const router = createBrowserRouter(
   
     createRoutesFromElements(
@@ -37,8 +47,8 @@ const App = () => { // this funtion is called from addjobs page, and is past to 
       <Route index element={<HomePage />} />
       <Route path='/jobs' element= {<JobsPages />} />
       <Route path='/add-job' element= {<AddJobsPage addJobsSubmit={addJob}/>} />
-      <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob}/>}  loader={jobLoader}/>
-      <Route path='/edit/jobs/:id' element={<EditJobPage />}  loader={jobLoader}/>
+      <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob }/>}  loader={jobLoader}/>
+      <Route path='/edit/jobs/:id' element={<EditJobPage  updateJobsSubmit={updateJob} />}loader={jobLoader}/>
       <Route path='*' element={<NotFound/>} />
     </Route>
     ))

@@ -1,19 +1,42 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
-
-
-const EditJobPage = () => {
-    const job = useLoaderData();
-    const [title,setTitle] = useState(job.title)
+import { useLoaderData,useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+const EditJobPage = ({updateJobsSubmit}) => {
+  const job = useLoaderData();
+  const [title,setTitle] = useState(job.title)
   const [type,setType] = useState(job.type)
   const [location,setLocation] = useState(job.location)
   const [description,setDescription] = useState(job.description)
   const [salary,setSalary] = useState(job.salary)
-  const [companyName,setCompanyName] = useState(job.companyName)
-  const [companyDescription,setCompanyDescription] = useState(job.companyDescription)
-  const [contactEmail,SetContactEmail] = useState(job.contactEmail)
-  const [contactPhone,setContactPhone] = useState(job.contactPhone)
+  const [companyName,setCompanyName] = useState(job.company.name)
+  const [companyDescription,setCompanyDescription] = useState(job.company.description)
+  const [contactEmail,SetContactEmail] = useState(job.company.contactEmail)
+  const [contactPhone,setContactPhone] = useState(job.company.contactPhone)
+  const navigate = useNavigate()
+  const {id} = useParams()
+  const submitForm = (e) =>{
+    e.preventDefault();
+    const updatedJob ={
+      id,
+      title,
+      type,
+      location,
+      description,
+      salary,
+      company:{
+        name: companyName,
+        description: companyDescription,
+        contactEmail,
+        contactPhone
+      }
+    }
 
+    updateJobsSubmit(updatedJob);
+    toast.success('Job updaded succesfully');
+    return navigate(`/jobs/${id}`)
+  }
     
   return (
     <>
@@ -190,7 +213,7 @@ const EditJobPage = () => {
                 className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
-                Add Job
+                Edit Job
               </button>
             </div>
           </form>

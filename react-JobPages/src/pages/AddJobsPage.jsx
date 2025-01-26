@@ -31,7 +31,7 @@ const AddJobsPage = ({addJobsSubmit}) => {
         contactPhone
       }
     }
-    console.log(newJob)
+
     addJobsSubmit(newJob);
     toast.success('Job Added succesfully');
     return navigate('/jobs')
